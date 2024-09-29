@@ -1,0 +1,56 @@
+/* Basic styles */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Header and Footer styling */
+.header {
+    background-image: url('dummy-header.jpg'); /* Dummy background */
+    background-size: cover;
+    height: 200px;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
+h1 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.card-title {
+    color: #17a2b8;
+}
+
+/* Buttons styling */
+button {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #f1f1f1;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+/* Background for the slides section */
+#slides {
+    background-image: url('dummy-background.jpg'); /* Dummy background */
+    background-size: cover;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}

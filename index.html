@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Distribution Tracking</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #343a40;
+            padding: 10px 0;
+        }
+
+        .header .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .header .nav-link {
+            color: white;
+        }
+
+        /* Main Content Background */
+        .main-content {
+            background-image: url('https://via.placeholder.com/1600x900'); /* Replace with actual image */
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+        }
+
+        /* Buttons & Form Container */
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            transition: 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .slide h5 {
+            color: #fff;
+        }
+
+        /* Form Card Styling */
+        .form-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .form-card.active {
+            display: block;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .footer a {
+            color: #17a2b8;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px 0;
+            }
+
+            .btn-custom {
+                font-size: 0.8rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with project name and navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">Fertilizer Tracking</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content with Background Image -->
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <!-- Button section -->
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block btn-custom" onclick="showSlide('register')">Register Retailer</button>
+                    <button class="btn btn-primary btn-block btn-custom" onclick="showSlide('release')">Release Fertilizer</button>
+                    <button class="btn btn-primary btn-block btn-custom" onclick="showSlide('claim')">Claim Fertilizer</button>
+                    <button class="btn btn-primary btn-block btn-custom" onclick="showSlide('view')">View Distribution</button>
+                </div>
+                
+                <!-- Form section -->
+                <div class="col-md-8">
+                    <div id="slides">
+                        <!-- Register Retailer Form -->
+                        <div id="register" class="slide form-card">
+                            <h5>Register Retailer</h5>
+                            <form id="registerForm">
+                                <div class="form-group">
+                                    <label for="retailerAddress">Retailer Address</label>
+                                    <input type="text" class="form-control" id="retailerAddress" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="retailerName">Retailer Name</label>
+                                    <input type="text" class="form-control" id="retailerName" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Register</button>
+                            </form>
+                        </div>
+
+                        <!-- Release Fertilizer Form -->
+                        <div id="release" class="slide form-card">
+                            <h5>Release Fertilizer</h5>
+                            <form id="releaseForm">
+                                <div class="form-group">
+                                    <label for="releaseAddress">Retailer Address</label>
+                                    <input type="text" class="form-control" id="releaseAddress" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bagsToRelease">Bags to Release</label>
+                                    <input type="number" class="form-control" id="bagsToRelease" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Release</button>
+                            </form>
+                        </div>
+
+                        <!-- Claim Fertilizer Form -->
+                        <div id="claim" class="slide form-card">
+                            <h5>Claim Fertilizer</h5>
+                            <form id="claimForm">
+                                <div class="form-group">
+                                    <label for="bagsToClaim">Bags to Claim</label>
+                                    <input type="number" class="form-control" id="bagsToClaim" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Claim</button>
+                            </form>
+                        </div>
+
+                        <!-- View Distribution Form -->
+                        <div id="view" class="slide form-card">
+                            <h5>View Distribution</h5>
+                            <form id="viewForm">
+                                <div class="form-group">
+                                    <label for="viewAddress">Retailer Address</label>
+                                    <input type="text" class="form-control" id="viewAddress" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">View</button>
+                            </form>
+                            <div id="distributionResult" class="mt-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with team name and extra info -->
+    <footer class="footer mt-5 py-4">
+        <div class="container text-center">
+            <p>© 2024 Fertilizer Tracking System | Developed by <strong>Agrim</strong></p>
+            <p>
+                <a href="#privacy" class="text-white">Privacy Policy</a> | 
+                <a href="#terms" class="text-white">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Function to show the selected form based on the button click
+        function showSlide(slideId) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            document.getElementById(slideId).classList.add('active');
+        }
+
+        // Default to showing the "Register Retailer" slide
+        document.addEventListener("DOMContentLoaded", function() {
+            showSlide('register');
+        });
+    </script>
+
+</body>
+</html>
